@@ -25,11 +25,11 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
-  aap: "calculator"
+  app: "calculator"
   env: "calculator-env"
   bucket_name: "elasticbeanstalk-us-east-2-884660626327"
   bucket_path: "calculator"
  # on:
  #   branch: master
-  access_key_id: $AWS_ACCESS_KEY
+  access_key_id: test
   secret_access_key: $AWS_SECRET_KEY
