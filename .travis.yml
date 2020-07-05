@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t mpividal26/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true mpivida/reac-test npm test
+
+after_success:
+  - docker build -t mpividal26/client ./client
+  - docker build -t mpividal26/nginx ./nginx
+  - docker build -t mpividal26/server ./server
+  - docker build -t mpividal26/worker ./worker
+
+#log in docker CLU
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push mpividal26/client
+  - docker push mpividal26/ngnix
+  - docker push mpividal26/server
+  - docker push mpividal26/worker
