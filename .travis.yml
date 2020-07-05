@@ -9,14 +9,26 @@ script:
   - docker run -e CI=true react-test npm test
 
 after_success:
-  - docker build -t mpividal26/client ./client
-  - docker build -t mpividal26/nginx ./nginx
-  - docker build -t mpividal26/server ./server
-  - docker build -t mpividal26/worker ./worker
+  - docker build -t mpividal26/mp-client ./client
+  - docker build -t mpividal26/mp-nginx ./nginx
+  - docker build -t mpividal26/mp-server ./server
+  - docker build -t mpividal26/mp-worker ./worker
 
 #log in docker CLU
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push mpividal26/client
-  - docker push mpividal26/ngnix
-  - docker push mpividal26/server
-  - docker push mpividal26/worker
+  - docker push mpividal26/mp-client
+  - docker push mpividal26/mp-ngnix
+  - docker push mpividal26/mp-server
+  - docker push mpividal26/mp-worker
+
+#deploy:
+#  provider: elasticbeanstalk
+#  region: "us-east-2"
+#  aap: "calculator"
+#  env: "calculator-env"
+#  bucket_name: "elasticbeanstalk-us-east-2-884660626327"
+#  bucket_path: "WebApp"
+#  on:
+#    branch: master
+#  access_key_id: $AWS_ACCESS_KEY
+#  secret_access_key: $AWS_SECRET_KEY

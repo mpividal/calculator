@@ -1,0 +1,37 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "mpividal26/mp-client",
+      "hostaname": "client",
+      "essential": false
+    },
+    {
+      "name": "server",
+      "image": "mpividal26/mp-server",
+      "hostaname": "api",
+      "essential": false
+    },
+    {
+      "name": "worker",
+      "image": "mpividal26/mp-worker",
+      "hostaname": "worker",
+      "essential": false
+    },
+    {
+      "name": "nginx",
+      "image": "mpividal26/mp-nginx",
+      "hostaname": "nginx",
+      "essential": true,
+      "portMappins": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "server" ]
+    }
+  ]
+
+}
