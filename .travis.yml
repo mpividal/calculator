@@ -22,14 +22,14 @@ after_success:
   - docker push mpividal26/mp-server
   - docker push mpividal26/mp-worker
 
-#deploy:
-#  provider: elasticbeanstalk
-#  region: "us-east-2"
-#  aap: "calculator"
-#  env: "calculator-env"
-#  bucket_name: "elasticbeanstalk-us-east-2-884660626327"
-#  bucket_path: "WebApp"
-#  on:
-#    branch: master
-#  access_key_id: $AWS_ACCESS_KEY
-#  secret_access_key: $AWS_SECRET_KEY
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  aap: "calculator"
+  env: "calculator-env"
+  bucket_name: "elasticbeanstalk-us-east-2-884660626327"
+  bucket_path: "calculator"
+ # on:
+ #   branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
