@@ -1,3 +1,4 @@
+language: generic
 sudo: required
 services:
   - docker
@@ -16,10 +17,10 @@ after_success:
 
 #log in docker CLU
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push mp-client
-  - docker push mp-ngnix
-  - docker push mp-server
-  - docker push mp-worker
+  - docker push mpividal26/mp-client
+  - docker push mpividal26/mp-ngnix
+  - docker push mpividal26/mp-server
+  - docker push mpividal26/mp-worker
 
 #deploy:
 #  provider: elasticbeanstalk
