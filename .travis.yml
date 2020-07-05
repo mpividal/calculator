@@ -9,17 +9,17 @@ script:
   - docker run -e CI=true react-test npm test
 
 after_success:
-  - docker build -t mpividal26/mp-client ./client
-  - docker build -t mpividal26/mp-nginx ./nginx
-  - docker build -t mpividal26/mp-server ./server
-  - docker build -t mpividal26/mp-worker ./worker
+  - docker build -t mp-client ./client
+  - docker build -t /mp-nginx ./nginx
+  - docker build -t mp-server ./server
+  - docker build -t mp-worker ./worker
 
 #log in docker CLU
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push mpividal26/mp-client
-  - docker push mpividal26/mp-ngnix
-  - docker push mpividal26/mp-server
-  - docker push mpividal26/mp-worker
+  - docker push mp-client
+  - docker push mp-ngnix
+  - docker push mp-server
+  - docker push mp-worker
 
 #deploy:
 #  provider: elasticbeanstalk
